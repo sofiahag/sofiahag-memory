@@ -22,12 +22,6 @@ function Game() {
         }
     };
 
-    function createCardBoard() {
-        const picsGenerated = pics?.concat(...pics)
-        const shuffledArray = shuffleArray(picsGenerated)
-        setpicsArray(shuffledArray)
-    }
-
     function flipPic(pic, index) {
 
         if (cardsPickedIds?.length === 1 && cardsPickedIds[0] === index) {
@@ -77,6 +71,11 @@ function Game() {
     }, [theme]);
 
     useEffect(() => {
+        function createCardBoard() {
+            const picsGenerated = pics?.concat(...pics)
+            const shuffledArray = shuffleArray(picsGenerated)
+            setpicsArray(shuffledArray)
+        }
         createCardBoard()
     }, [])
 
