@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.bcfef65c.css",
+    "main.js": "/static/js/main.92700668.js",
+    "static/js/787.8ba994f0.chunk.js": "/static/js/787.8ba994f0.chunk.js",
+    "static/media/uni-2.jpg": "/static/media/uni-2.5db7815e69b1b43ec4d0.jpg",
+    "static/media/uni-4.jpg": "/static/media/uni-4.61629d369eb827ecd02a.jpg",
+    "static/media/uni-9.jpg": "/static/media/uni-9.0c55637d696fa7bf2aad.jpg",
+    "static/media/uni-5.jpg": "/static/media/uni-5.e2a1b5f8440d15b5218a.jpg",
+    "static/media/uni-6.jpg": "/static/media/uni-6.1c8b41dfb1c9914b61b9.jpg",
+    "static/media/uni-8.jpg": "/static/media/uni-8.9f6eed6873f7dad61809.jpg",
+    "static/media/uni-3.jpg": "/static/media/uni-3.e7a29b1781eda30d240c.jpg",
+    "static/media/uni-10.jpg": "/static/media/uni-10.777462b2040ee03de6d0.jpg",
+    "static/media/uni-back-light.png": "/static/media/uni-back-light.ca49f17b62b3f2801de9.png",
+    "static/media/uni-7.jpg": "/static/media/uni-7.4373bf92b42bce634893.jpg",
+    "static/media/uni-1.jpg": "/static/media/uni-1.b5ca553aacccc90a72b2.jpg",
+    "static/media/uni-back-dark.png": "/static/media/uni-back-dark.09b4ef9087306909bd34.png",
+    "static/media/sofiapro-light.otf": "/static/media/sofiapro-light.7978d11b00722a17ccfa.otf",
+    "static/media/night.png": "/static/media/night.d4a9754bd5af55a61c6e.png",
+    "static/media/day.png": "/static/media/day.f9fece2a4db008b31f58.png",
+    "index.html": "/index.html",
+    "main.bcfef65c.css.map": "/static/css/main.bcfef65c.css.map",
+    "main.92700668.js.map": "/static/js/main.92700668.js.map",
+    "787.8ba994f0.chunk.js.map": "/static/js/787.8ba994f0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bcfef65c.css",
+    "static/js/main.92700668.js"
+  ]
+}
