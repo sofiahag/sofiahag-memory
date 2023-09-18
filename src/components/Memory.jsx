@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react"
+
 import { pics } from "../assets/cards/cards"
 import lightBackCard from "../assets/uni-back-light.png"
 import darkBackCard from "../assets/uni-back-dark.png"
 import lightToggle from "../assets/day.png";
 import darkToggle from "../assets/night.png";
+
+//TODO Add confetti on complete
 
 function Game() {
 
@@ -81,9 +84,9 @@ function Game() {
 
     return (
         <div className="md:h-screen md:flex md:items-center md:justify-center">
-            <div className="columns-1 ml-12 mr-5 max-sm:columns-2 max-sm:justify-center max-sm:my-5 max-sm:flex max-sm:items-center 
-                max-sm:ml-0 max-sm:mr-0">
-                <h3 className="mb-4 ml-3 font-sofia text-lg dark:text-white max-sm:ml-0 max-sm:mr-2 max-sm:mt-3 max-sm:text-base">
+            <div className="columns-1 lg:ml-12 lg:mr-5 md:ml-6 md:mr-1 max-sm:columns-2 max-sm:justify-center max-sm:my-5 max-sm:flex 
+                max-sm:items-center max-sm:ml-0 max-sm:mr-0">
+                <h3 className="mb-4 lg:ml-5 md:ml-5 font-sofia text-lg dark:text-white max-sm:ml-0 max-sm:mr-2 max-sm:mt-4 max-sm:text-base">
                     Creds: {creds}
                 </h3>
                 <button className="font-sofia bg-gradient-to-r from-teal-400 via-cyan-600 to-cyan-400
@@ -92,8 +95,9 @@ function Game() {
                   max-sm:py-1 max-sm:px-3" onClick={startOver}>Start over
                 </button>
             </div>
-            <div className="grid lg:grid-cols-6 gap-4 m-12 md:grid-cols-4 max-sm:grid-cols-4 max-sm:gap-2 max-sm:m-3 max-sm:mt-3">
-            <h2 className="flex items-center justify-center font-mooli text-2xl max-md:text-xs gradient-text">
+            <div className="grid lg:grid-cols-6 gap-4 lg:m-12 md:grid-cols-4 md:m-6 max-sm:grid-cols-4 max-sm:gap-2 max-sm:m-5 
+                max-sm:mt-3">
+            <h2 className="flex items-center justify-center font-mooli lg:text-2xl md:text-sm max-sm:text-xs gradient-text">
                 Unicorn<br></br>Memory
             </h2>
             {picsArray?.map((pic, index) => {
