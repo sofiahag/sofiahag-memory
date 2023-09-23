@@ -92,7 +92,7 @@ function Game() {
 
     return (
         <div className="md:h-screen md:flex md:items-center md:justify-center">
-            <div className="h-full justify-center fixed">{ creds === 2 && <ConfettiExplosion config={confetti} /> } </div>
+            <div className="h-full justify-center fixed">{ creds === 20 && <ConfettiExplosion config={confetti} /> } </div>
             <div className="columns-1 lg:ml-12 lg:mr-5 md:ml-6 md:mr-1 max-sm:columns-2 max-sm:justify-center max-sm:my-5 max-sm:flex 
                 max-sm:items-center max-sm:ml-0 max-sm:mr-0">
                 <h3 className="mb-4 lg:ml-5 md:ml-5 font-sofia text-lg dark:text-white max-sm:ml-0 max-sm:mr-2 max-sm:mt-4 max-sm:text-base">
