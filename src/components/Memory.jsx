@@ -7,7 +7,6 @@ import darkBackCard from "../assets/uni-back-dark.png"
 import lightToggle from "../assets/day.png";
 import darkToggle from "../assets/night.png";
 
-//TODO Add confetti on complete
 
 function Game() {
 
