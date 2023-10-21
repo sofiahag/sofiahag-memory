@@ -9,38 +9,18 @@
   src: local('Sofia Pro'), url('./assets/fonts/sofiapro-light.otf') format('opentype');
 }
 
-.dark {
+body {
   background: black;
-}
-
-.light {
-  background: white;
 }
 
 button {
   white-space: nowrap; 
 }
 
-.dark .gradient-text {
+.gradient-text {
   --bg-size: 400%;
   --color-one: hsl(302, 79%, 79%);
   --color-two: hsl(53, 100%, 75%);
-  background: linear-gradient(
-                90deg,
-                var(--color-one),
-                var(--color-two),
-                var(--color-one)
-              ) 0 0 / var(--bg-size) 100%;
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  animation: move-bg 10s infinite linear;
-}
-
-.light .gradient-text {
-  --bg-size: 400%;
-  --color-one: hsl(287, 59%, 45%);
-  --color-two: hsl(172, 49%, 44%);
   background: linear-gradient(
                 90deg,
                 var(--color-one),
