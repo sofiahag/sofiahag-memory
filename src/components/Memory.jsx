@@ -111,15 +111,15 @@ function Game() {
                 <button className="font-sofia bg-gradient-to-r from-pink-300 via-yellow-200 to-pink-200 border-yellow-200 py-3 px-5
                 border-2 rounded-full text-base text-black font-bold max-sm:py-1 max-sm:px-3" onClick={startOver}>Start over
                 </button>
-                <div className="stopwatch-container">
-                    <p className="text-white text-center mt-5">
+                <div className="stopwatch-container lg:mt-5 md:mt-5 max-sm:ml-1">
+                    <p className="text-white text-center">
                         {hours}:{minutes.toString().padStart(2, "0")}:
                         {seconds.toString().padStart(2, "0")}:
                         {milliseconds.toString().padStart(2, "0")}
                     </p>
+                </div>
             </div>
-            </div>
-            <div className="grid lg:grid-cols-7 gap-4 lg:m-12 md:grid-cols-4 md:m-6 max-sm:grid-cols-4 max-sm:gap-2 max-sm:m-5 
+            <div className="grid lg:grid-cols-7 gap-4 lg:m-12 md:grid-cols-4 md:m-6 max-sm:grid-cols-4 max-sm:gap-3 max-sm:m-5 
                 max-sm:mt-3">
             <h2 className="flex items-center justify-center font-mooli lg:text-2xl md:text-sm max-sm:text-xs gradient-text">
                 Unicorn<br></br>Memory
