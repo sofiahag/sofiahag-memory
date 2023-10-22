@@ -14,6 +14,7 @@ function Game() {
     const [flippedCards, setFlippedCards] = useState([]);
     const [time, setTime] = useState(0);
     const [isRunning, setIsRunning] = useState(false);
+    const [showMsg, setShowMsg] = useState(false);
 
     const hours = Math.floor(time / 360000);
     const minutes = Math.floor((time % 360000) / 6000);
@@ -95,13 +96,29 @@ function Game() {
     useEffect(() => { 
         if (creds === 20) {
             setIsRunning(false);
-            setTime(0);
         }
+    }, [creds])
+
+    useEffect(() => {
+        if (creds === 20) {
+            setShowMsg(true);
+        }
+        setTimeout(() => {
+            setShowMsg(false);
+        }, 3000);
     }, [creds])
     
 
     return (
         <div className="md:h-screen md:flex md:items-center md:justify-center">
+            {(time < 6000 && showMsg) ? (
+                <h2 className="absolute z-100 font-bold font-bubblegum bg-gradient-to-r from-yellow-300 via-yellow-300
+                to-yellow-300 inline-block text-transparent bg-clip-text drop-shadow-2xl font-outline-2 mt-5 text-10xl ml-20">Great job!</h2>
+            ) : ("")}
+            {(time > 6000 && showMsg) ? (
+                <h2 className="absolute z-100 font-bold font-bubblegum bg-gradient-to-r from-yellow-300 via-yellow-300
+                to-yellow-300 inline-block text-transparent bg-clip-text drop-shadow-2xl font-outline-2 mt-5 text-10xl ml-20">You can do better!</h2>
+            ) : ("")}
             <div className="h-full justify-center fixed">{creds === 20 && <ConfettiExplosion config={confetti} />}</div>
             <div className="columns-1 lg:ml-12 lg:mr-5 md:ml-6 md:mr-1 max-sm:columns-2 max-sm:justify-center max-sm:my-5 max-sm:flex 
                 max-sm:items-center max-sm:ml-0 max-sm:mr-0">

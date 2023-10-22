@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Mooli&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mooli&family=Bubblegum+Sans&display=swap');
 
 @font-face {
   font-family: 'Sofia Pro';
@@ -37,4 +37,8 @@ button {
   to {
     background-position: var(--bg-size) 0;
   }
+}
+
+.font-outline-2 {
+  -webkit-text-stroke: 2px black;
 }

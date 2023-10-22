@@ -11,11 +11,16 @@ module.exports = {
         '7': '56px',
         '8': '64px',
         '12': '70px',
+        '20': '200px',
         '32': '320px'
       },
       fontFamily: {
         sofia: ['Sofia Pro'],
-        mooli: ['Mooli']
+        mooli: ['Mooli'],
+        bubblegum: ['Bubblegum Sans']
+      },
+      fontSize: {
+        '10xl': '10rem',
       }
     },
   },
