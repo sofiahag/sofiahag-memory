@@ -15,6 +15,7 @@ function Game() {
     const [time, setTime] = useState(0);
     const [isRunning, setIsRunning] = useState(false);
     const [showMsg, setShowMsg] = useState(false);
+    const [darkness, setDarkness] = useState('brightness-100');
 
     const hours = Math.floor(time / 360000);
     const minutes = Math.floor((time % 360000) / 6000);
@@ -74,6 +75,7 @@ function Game() {
         setFlippedCards([]);
         setIsRunning(false);
         setTime(0);
+        setDarkness('brightness-100');
     }
 
     useEffect(() => {
@@ -102,22 +104,23 @@ function Game() {
     useEffect(() => {
         if (creds === 20) {
             setShowMsg(true);
+            setDarkness('brightness-50');
         }
         setTimeout(() => {
             setShowMsg(false);
-        }, 5000);
+        }, 10000);
     }, [creds])
     
 
     return (
         <div className="md:h-screen md:flex md:items-center md:justify-center">
             {(time < 6000 && showMsg) ? (
-                <h2 className="absolute z-100 font-bold font-bubblegum bg-gradient-to-r from-yellow-300 via-yellow-300
+                <h2 className="absolute z-50 font-bold font-bubblegum bg-gradient-to-r from-yellow-300 via-yellow-300
                 to-yellow-300 inline-block text-transparent bg-clip-text drop-shadow-2xl font-outline-2 mt-5 lg:text-10xl 
                 md:text-8xl max-sm:text-5xl max-sm:mt-20 max-sm:ml-15 lg:ml-20">Great job!</h2>
             ) : ("")}
             {(time > 6000 && showMsg) ? (
-                <h2 className="absolute z-100 font-bold font-bubblegum bg-gradient-to-r from-yellow-300 via-yellow-300
+                <h2 className="absolute z-50 font-bold font-bubblegum bg-gradient-to-r from-yellow-300 via-yellow-300
                 to-yellow-300 inline-block text-transparent bg-clip-text drop-shadow-2xl font-outline-2 mt-5 lg:text-10xl 
                 md:text-8xl max-sm:text-5xl max-sm:mt-20 max-sm:ml-4 lg:ml-20">You can do better!</h2>
             ) : ("")}
@@ -138,8 +141,8 @@ function Game() {
                     </p>
                 </div>
             </div>
-            <div className="grid lg:grid-cols-7 gap-4 lg:m-12 md:grid-cols-4 md:m-6 max-sm:grid-cols-4 max-sm:gap-3 max-sm:m-5 
-                max-sm:mt-3">
+            <div className={`grid lg:grid-cols-7 gap-4 lg:m-12 md:grid-cols-4 md:m-6 max-sm:grid-cols-4 max-sm:gap-3 max-sm:m-5 
+                max-sm:mt-3 ${darkness}`}>
             <h2 className="flex items-center justify-center font-mooli lg:text-2xl md:text-sm max-sm:text-xs gradient-text">
                 Unicorn<br></br>Memory
             </h2>
