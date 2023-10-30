@@ -125,15 +125,15 @@ function Game() {
                 md:text-8xl max-sm:text-5xl max-sm:mt-20 max-sm:ml-4 lg:ml-20">You can do better!</h2>
             ) : ("")}
             <div className="h-full justify-center fixed">{creds === 20 && <ConfettiExplosion config={confetti} />}</div>
-            <div className="columns-1 lg:ml-12 lg:mr-5 md:ml-6 md:mr-1 max-sm:columns-2 max-sm:justify-center max-sm:my-5 max-sm:flex 
+            <div className="columns-1 lg:ml-12 lg:mr-5 md:ml-6 md:mr-1 max-sm:columns-3 max-sm:justify-center max-sm:my-5 max-sm:flex 
                 max-sm:items-center max-sm:ml-0 max-sm:mr-0">
-                <h3 className="mb-4 lg:ml-5 md:ml-5 font-sofia text-lg text-white max-sm:ml-0 max-sm:mr-2 max-sm:mt-4 max-sm:text-base">
+                <h3 className="mb-4 lg:ml-5 md:ml-5 font-sofia text-lg text-white max-sm:ml-0 max-sm:mr-3 max-sm:mt-4 max-sm:text-base">
                     Creds: {creds}
                 </h3>
                 <button className="font-sofia bg-gradient-to-r from-pink-300 via-yellow-200 to-pink-200 border-yellow-200 py-3 px-5
                 border-2 rounded-full text-base text-black font-bold max-sm:py-1 max-sm:px-3" onClick={startOver}>Start over
                 </button>
-                <div className="stopwatch-container lg:mt-5 md:mt-5 max-sm:ml-1">
+                <div className="stopwatch-container lg:mt-5 md:mt-5 max-sm:ml-1 max-sm:w-15">
                     <p className="text-white text-center">
                         {hours}:{minutes.toString().padStart(2, "0")}:
                         {seconds.toString().padStart(2, "0")}:
