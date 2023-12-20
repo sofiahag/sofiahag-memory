@@ -4,48 +4,88 @@ import { pics } from "../assets/cards/cards";
 import darkBackCard from "../assets/uni-back-dark.png";
 
 function Game() {
-    const [picsArray, setPicsArray] = useState([]);
-    const [cardsPicked, setCardsPicked] = useState([]);
-    const [cardsPickedIds, setCardsPickedIds] = useState([]);
-    const [creds, setCreds] = useState(0);
-    const [flippedCards, setFlippedCards] = useState([]);
-    const [time, setTime] = useState(0);
-    const [isRunning, setIsRunning] = useState(false);
-    const [showMsg, setShowMsg] = useState(false);
-    const [darkness, setDarkness] = useState('brightness-100');
+    const [gameState, setGameState] = useState({
+        picsArray: [],
+        cardsPicked: [],
+        cardsPickedIds: [],
+        creds: 0,
+        flippedCards: [],
+        time: 0,
+        isRunning: false,
+        showMsg: false,
+        darkness: 'brightness-100',
+        clickEnabled: true
+    });
 
-    const hours = Math.floor(time / 360000);
-    const minutes = Math.floor((time % 360000) / 6000);
-    const seconds = Math.floor((time % 6000) / 100);
-    const milliseconds = time % 100;
+    const {
+        picsArray,
+        cardsPicked,
+        cardsPickedIds,
+        creds,
+        flippedCards,
+        time,
+        isRunning,
+        showMsg,
+        darkness,
+    } = gameState;
 
-    const confetti = {
+    const { force, duration, particleCount, width } = {
         force: 0.5,
         duration: 4500,
         particleCount: 2000,
         width: 4000,
     };
 
-    const flipPic = (pic, index) => {
-        if (cardsPickedIds.length === 1 && cardsPickedIds[0] === index) {
-            return;
-        }
+    const confettiConfig = {
+        force,
+        duration,
+        particleCount,
+        width,
+    };
 
-        if (cardsPicked.length < 2) {
-            setIsRunning(true);
-            setCardsPicked([...cardsPicked, pic]);
-            setCardsPickedIds([...cardsPickedIds, index]);
+    const timeVariables = {
+        hours: Math.floor(time / 360000),
+        minutes: Math.floor((time % 360000) / 6000),
+        seconds: Math.floor((time % 6000) / 100),
+        milliseconds: time % 100,
+    };
 
-            if (cardsPicked.length === 1) {
-                if (cardsPicked[0] === pic) {
-                    setCreds((creds) => creds + 2);
-                    setFlippedCards([...flippedCards, cardsPicked[0], pic]);
-                }
-                setTimeout(() => {
-                    setCardsPickedIds([]);
-                    setCardsPicked([]);
-                }, 2000);
+    const { hours, minutes, seconds, milliseconds } = timeVariables;
+
+    const flipPic = async (pic, index) => {
+        if (!gameState.clickEnabled || (cardsPickedIds.length === 1 && cardsPickedIds[0] === index)) return;
+
+        setGameState((prevState) => ({
+            ...prevState,
+            clickEnabled: false,
+
+            isRunning: true,
+            cardsPicked: [...cardsPicked, pic],
+            cardsPickedIds: [...cardsPickedIds, index],
+        }));
+
+        if (cardsPicked.length === 1) {
+            if (cardsPicked[0] === pic) {
+                setGameState((prevState) => ({
+                    ...prevState,
+                    creds: prevState.creds + 2,
+                    flippedCards: [...prevState.flippedCards, cardsPicked[0], pic],
+                }));
             }
+
+            await new Promise((resolve) => setTimeout(resolve, 2000));
+
+            setGameState((prevState) => ({
+                ...prevState,
+                cardsPickedIds: [],
+                cardsPicked: [],
+                clickEnabled: true,
+            }));
+        } else {
+            setGameState((prevState) => ({
+                ...prevState,
+                clickEnabled: true,
+            }));
         }
     };
 
@@ -60,20 +100,26 @@ function Game() {
     };
 
     const startOver = () => {
-        setCardsPickedIds([]);
-        setCardsPicked([]);
-        setCreds(0);
-        setFlippedCards([]);
-        setIsRunning(false);
-        setTime(0);
-        setDarkness('brightness-100');
+        setGameState((prevState) => ({
+            ...prevState,
+            cardsPickedIds: [],
+            cardsPicked: [],
+            creds: 0,
+            flippedCards: [],
+            isRunning: false,
+            time: 0,
+            darkness: 'brightness-100',
+        }));
     };
 
     useEffect(() => {
         const createCardBoard = () => {
             const picsGenerated = pics.concat(...pics);
             const shuffledArray = shuffleArray(picsGenerated);
-            setPicsArray(shuffledArray);
+            setGameState((prevState) => ({
+                ...prevState,
+                picsArray: shuffledArray,
+            }));
         };
         createCardBoard();
     }, []);
@@ -81,17 +127,20 @@ function Game() {
     useEffect(() => {
         let intervalId;
         if (isRunning) {
-            intervalId = setInterval(() => setTime((time) => time + 1), 10);
+            intervalId = setInterval(() => setGameState((prevState) => ({ ...prevState, time: time + 1 })), 10);
         }
         return () => clearInterval(intervalId);
     }, [isRunning, time]);
 
     useEffect(() => {
         if (creds === 20) {
-            setIsRunning(false);
-            setShowMsg(true);
-            setDarkness('brightness-50');
-            setTimeout(() => setShowMsg(false), 10000);
+            setGameState((prevState) => ({
+                ...prevState,
+                isRunning: false,
+                showMsg: true,
+                darkness: 'brightness-50',
+            }));
+            setTimeout(() => setGameState((prevState) => ({ ...prevState, showMsg: false })), 10000);
         }
     }, [creds]);
 
@@ -105,7 +154,7 @@ function Game() {
                     {time < 6000 ? "Great job!" : "You can do better!"}
                 </h2>
             )}
-            <div className="h-full justify-center fixed">{creds === 20 && <ConfettiExplosion config={confetti} />}</div>
+            <div className="h-full justify-center fixed">{creds === 20 && <ConfettiExplosion config={confettiConfig} />}</div>
             <div className="columns-1 lg:ml-12 lg:mr-5 md:ml-6 md:mr-1 max-sm:columns-3 max-sm:justify-center max-sm:my-5 max-sm:flex 
                 max-sm:items-center max-sm:ml-0 max-sm:mr-0">
                 <h3 className="mb-4 lg:ml-5 md:ml-5 font-sofia text-lg text-white max-sm:ml-0 max-sm:mr-3 max-sm:mt-4 max-sm:text-base">
